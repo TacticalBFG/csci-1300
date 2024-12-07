@@ -1,64 +1,48 @@
 #include "Advisor.h"
 #include <iostream>
+#include <vector>
+
+using namespace std;
 
 Advisor::Advisor() {
 	name = "";
-	staminaBoost = 0;
-	wisdomBoost = 0;
-	strengthBoost = 0;
-	wiseness = 0;
+	ability = "";
 }
 
-Advisor::Advisor(std::string n, std::string abil, int s, int w, int str, int wise) {
-	name = n;
-	staminaBoost = s;
-	wisdomBoost = w;
-	strengthBoost = str;
-	wiseness = wise;
-	ability = abil;
+Advisor::Advisor(string _name, string _ability) {
+	name = _name;
+	ability = _ability;
 }
 
-std::string Advisor::getName() const {
+string Advisor::getName() const {
 	return name;
 }
 
-std::string Advisor::getAbility() const {
+string Advisor::getAbility() const {
 	return ability;
 }
 
-int Advisor::getStamina() const {
-	return staminaBoost;
+void Advisor::printAdvisorInfo() {
+	cout << name << ":" << endl;
+	cout << "  Special Ability: " << ability << endl;
 }
 
-int Advisor::getStrength() const {
-	return strengthBoost;
-}
+vector<Advisor> buildAdvisorArray() {
+	Advisor none("None", "");
+	Advisor rafiki("Rafiki", "Invisibility");
+	Advisor nala("Nala", "Night Vision");
+	Advisor sarabi("Sarabi", "Energy Manipulation");
+	Advisor zazu("Zazu", "Weather Control");
+	Advisor sarafina("Sarafina", "Super Speed");
 
-int Advisor::getWisdom() const {
-	return wisdomBoost;
-}
+	vector<Advisor> advisors = {
+		none,
+		rafiki,
+		nala,
+		sarabi,
+		zazu,
+		sarafina
+	};
 
-int Advisor::getWiseness() const {
-	return wiseness;
+	return advisors;
 }
-
-void Advisor::printStats() {
-	std::cout << name.c_str() << " : Special Ability : " << ability.c_str() << std::endl;
-	std::cout << "	Stamina Boost: " << staminaBoost << std::endl;
-	std::cout << "	Strength Boost: " << strengthBoost << std::endl;
-	std::cout << "	Wisdom Boost: " << wisdomBoost << std::endl;
-}
-
-Advisor advisor(std::string n, std::string abil, int s, int w, int str, int wise) {
-	Advisor a(n, abil, s, w, str, wise);
-	return a;
-}
-
-Advisor advisors[6] = {
-	advisor("None", "",0,0,0,0),
-	advisor("Rafiki", "Invisibility", 0, 100, 100, 100),
-	advisor("Nala", "Night Vision", 50, 200, 0, 80),
-	advisor("Sarabi", "Energy Manipulation", 100, 0, 300, 20),
-	advisor("Zazu", "Weather Control", 50, 200, 0, 100),
-	advisor("Sarafina", "Super Speed", 300, 50, 50, 50)
-};
