@@ -1,28 +1,21 @@
 #pragma once
 #include <string>
+#include <vector>
+
+using namespace std;
 
 class Advisor
 {
 private:
-	std::string name;
-	std::string ability;
-	int staminaBoost;
-	int wisdomBoost;
-	int strengthBoost;
-	int wiseness;
+	string name;
+	string ability;
 
 public:
-	std::string getName() const;
-	std::string getAbility() const;
-	int getStamina() const;
-	int getWisdom() const;
-	int getStrength() const;
-	int getWiseness() const;
+	string getName() const;
+	string getAbility() const;
 
 	void printStats();
 
 	Advisor();
-	Advisor(std::string, std::string, int, int, int, int);
+	Advisor(string, string);
 };
-
-extern Advisor advisors[6];
